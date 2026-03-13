@@ -104,4 +104,6 @@ Each table entry `dp[i][j]` stores the best total value obtainable using the fir
 
 If the current item fits inside the current capacity, the recurrence compares two choices: skip the item and keep the value `dp[i - 1][j]`, or take the item once and add its value to the best answer from the remaining capacity, `dp[i - 1][j - weight] + value`. If the item does not fit, the algorithm has no decision to make and simply copies the value from the row above.
 
+In the JavaScript implementation, the dynamic programming table is created with `Array.from()` and `fill(0)`, which gives a full 2D table of zeros before the algorithm begins. Then `Math.max()` is used in the recurrence to choose between skipping the item and taking it once. The formatting helpers later use `map()` and `join()` so the items and the finished table can be displayed clearly in the example output.
+
 Because the table contains `(n + 1)(k + 1)` cells and each cell is filled in constant time, the runtime is `O(nk)`. The implementation stores the entire table, so the space usage is also `O(nk)`. That runtime is pseudo-polynomial because it depends on the numeric capacity `k`, not just on the number of items.
